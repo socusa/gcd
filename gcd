@@ -1,0 +1,35 @@
+from tkinter import *
+import tkinter as tk
+
+root = tk.Tk()
+
+def gcd(first,second,output):
+    firstnumber = int(first.get())
+    secondnumber = int(second.get())
+
+    remainder = 1
+
+    while (remainder>0):
+        remainder = firstnumber%secondnumber
+        firstnumber = secondnumber
+        secondnumber = remainder
+
+    output.delete(0,END)
+    output.insert(0,firstnumber)
+
+labelfirstnumber = Label(root,text="First Number")
+firstnumber = Entry(root)
+labelsecondnumber = Label(root,text="Second Number")
+secondnumber = Entry(root)
+output = Entry(root)
+button = Button(root,text="GCD",command=lambda a=firstnumber,b=secondnumber,c=output: gcd(a,b,c))
+
+labelfirstnumber.grid(row=0,column=0)
+firstnumber.grid(row=0,column=1)
+labelsecondnumber.grid(row=1,column=0)
+secondnumber.grid(row=1,column=1)
+button.grid(row=2,column=0)
+output.grid(row=2,column=1)
+
+root.mainloop()
+
